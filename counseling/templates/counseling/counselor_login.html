@@ -1,0 +1,23 @@
+{% extends 'counseling/page_base.html' %}
+
+{% block content %}
+    <div class="login-container">
+        <div class="login-box">
+
+            <!-- Counselor Login -->
+            <div class="login-section">
+                <h2>COUNSELOR' LOGIN</h2>
+                <p>Only current counselor can log in from here.</p>
+                <form method="POST" action="{% url 'counselor_login' %}" style="margin-top: 20px;">
+                    {% csrf_token %}
+                    <input type="text" name="pf_number" placeholder="PF Number" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit" class="btn" style="margin: 0 auto;">Login</button>
+                </form>
+                <div class="register-link" style="margin-top: 20px;">
+                    Are you new here? <a href="{% url 'counselor_signup' %}">Register Here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

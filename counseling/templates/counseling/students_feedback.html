@@ -1,0 +1,37 @@
+{% extends 'counseling/base.html' %}
+{% block content %}
+<div class="feedback-container">
+    <h2>👩‍🏫 Feedback Received</h2>
+
+    {% if feedback_list %}
+        <table class="appointments-table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Service</th>
+                    <th>Rating</th>
+                    <th>Comments</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fb in feedback_list %}
+                <tr>
+                    <td>{{ fb.student.user.get_full_name }}</td>
+                    <td>{{ fb.appointment.counseling_service.name }}</td>
+                    <td>
+                        {% for i in "12345" %}
+                            <span style="color: {% if i|add:"0"|int <= fb.rating %}gold{% else %}#ccc{% endif %}; font-size: 18px;">★</span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ fb.comments }}</td>
+                    <td>{{ fb.submitted_at|date:"M d, Y" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No feedback has been submitted yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

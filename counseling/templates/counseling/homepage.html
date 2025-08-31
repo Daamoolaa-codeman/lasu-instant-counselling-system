@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LASU Counseling - Login</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fb;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left Side */
+        .left-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #004080, #0073e6);
+            color: white;
+            padding: 40px;
+            animation: slideInLeft 1.2s ease;
+        }
+
+        .left-panel img.logo {
+            width: 90px;
+            margin-bottom: 15px;
+        }
+
+        .left-panel h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .left-panel p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: block;
+            background: #f4a31a;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 220px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: #e09612;
+            transform: scale(1.05);
+        }
+
+        /* Right Side */
+        .right-panel {
+            flex: 1;
+            background: url("{% static 'images/cover.png' %}") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .illustration {
+            max-width: 70%;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            animation: zoomIn 1.5s ease;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 14px;
+            padding: 15px;
+            background: #001f3f;
+            color: white;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #f4a31a;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-panel">
+            <img src="{% static 'images/lasu_logo.png' %}" alt="LASU Logo" class="logo">
+            <h1>LASU Instant Counseling System</h1>
+            <p>Welcome to a safe space where students connect with counselors instantly.</p>
+
+            <a class="btn" href="/login/student">Login as Student</a>
+            <a class="btn" href="/login/counselor">Login as Counselor</a>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-panel">
+            <img src="{% static 'images/illustration.jpg' %}" alt="Counseling Illustration" class="illustration">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#">Contact Us</a> | 
+        <a href="{% url 'about_counseling' %}">About Counseling</a> | 
+        <a href="#">Help Center</a><br><br>
+        &copy; {{ year }} Lagos State University Counseling System
+    </footer>
+</body>
+</html>

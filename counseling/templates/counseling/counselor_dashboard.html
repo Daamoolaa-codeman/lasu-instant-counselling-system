@@ -1,0 +1,120 @@
+{% extends 'counseling/base.html' %}
+{% block content %}
+<div class="dashboard-container">
+    <h2>👩‍🏫 Welcome, {{ user.first_name }}!</h2>
+
+    <!-- 🔹 Summary Metrics -->
+    <div class="summary-cards">
+        <div class="summary-card card-blue">
+            <h4>Total Bookings</h4>
+            <p>{{ total_appointments }}</p>
+        </div>
+        <div class="summary-card card-green">
+            <h4>Completed Sessions</h4>
+            <p>{{ completed_sessions }}</p>
+        </div>
+        <div class="summary-card card-yellow">
+            <h4>Feedback Received</h4>
+            <p>{{ feedback_count }}</p>
+        </div>
+    </div>
+
+    <!-- 🔹 Functional Cards -->
+    <div class="dashboard-cards">
+        <div class="dashboard-card">
+            <h3>Booked Appointments</h3>
+            <p>Review and manage your upcoming counseling appointments.</p>
+            <a href="{% url 'counselor_appointments' %}" class="submit-btn">View Bookings</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Session History</h3>
+            <p>Access and update session records for students you've counseled.</p>
+            <a href="{% url 'session_history' %}" class="submit-btn">View Sessions</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Feedback</h3>
+            <p>Read feedback submitted by students regarding past sessions.</p>
+            <a href="{% url 'counselor_feedback' %}" class="submit-btn">View Feedback</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Join Instant Chat</h3>
+            <p>Enter the live session room to chat with students in real time.</p>
+            <a href="{% url 'chat_room' room_name='instant-session' %}" class="submit-btn">Join Now</a>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+.dashboard-container {
+    padding: 20px;
+}
+
+.summary-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card-blue {
+    background-color: #007bff;
+}
+.card-green {
+    background-color: #28a745;
+}
+.card-yellow {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.summary-card h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.summary-card p {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.dashboard-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
+.dashboard-card h3 {
+    color: #2e8b57;
+}
+
+.dashboard-card p {
+    color: #555;
+    margin: 10px 0;
+}
+</style>
+{% endblock %}

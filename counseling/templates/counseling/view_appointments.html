@@ -1,0 +1,85 @@
+{% extends 'counseling/base.html' %}
+{% block content %}
+<div class="appointments-container">
+    <h2>📅 My Appointments</h2>
+
+    {% if appointments %}
+        <table class="appointments-table" style="margin-bottom: 30px;">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Counselor</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td>{{ appointment.counselor }}</td>
+                    <td>
+                        {{ appointment.status }}
+                        {% if appointment.status == "Completed" %}
+                            {% if appointment.feedback_set.count > 0 %}
+                                | <a href="#" class="view-feedback-link" data-modal-id="modal-{{ appointment.id }}">View Feedback</a>
+
+                                <!-- Modal -->
+                                <div id="modal-{{ appointment.id }}" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close" data-modal-id="modal-{{ appointment.id }}">&times;</span>
+                                        <h3>📋 Feedback Details</h3>
+                                        <p><strong>Rating:</strong> {{ appointment.feedback_set.first.rating }}</p>
+                                        <p><strong>Comment:</strong> {{ appointment.feedback_set.first.comments }}</p>
+                                    </div>
+                                </div>
+                            {% else %}
+                                | <a href="{% url 'submit_feedback' appointment.id %}">Give Feedback</a>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no scheduled appointments.</p>
+    {% endif %}
+
+    <div class="book-link">
+        <a href="{% url 'book_appointment' %}" class="submit-btn">➕ Book New Appointment</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('.view-feedback-link');
+        const modals = document.querySelectorAll('.modal');
+        const closes = document.querySelectorAll('.close');
+
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const modalId = this.getAttribute('data-modal-id');
+                document.getElementById(modalId).style.display = 'block';
+            });
+        });
+
+        closes.forEach(closeBtn => {
+            closeBtn.addEventListener('click', function () {
+                const modalId = this.getAttribute('data-modal-id');
+                document.getElementById(modalId).style.display = 'none';
+            });
+        });
+
+        window.onclick = function (event) {
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+    });
+</script>
+{% endblock %}

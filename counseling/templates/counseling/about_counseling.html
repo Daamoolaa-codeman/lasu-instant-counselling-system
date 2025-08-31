@@ -1,0 +1,138 @@
+{% block content %}
+<div class="about-container">
+    <h2>🧠 About Counseling</h2>
+
+    <section class="intro">
+        <p>Counseling is a confidential and supportive service designed to help students manage academic, personal, emotional, and social challenges.</p>
+        <p>At LASU, our professional counselors are here to provide guidance, encouragement, and practical support whenever needed — no judgment, no pressure.</p>
+    </section>
+
+    <section class="why-counseling">
+        <h3>Why Seek Counseling?</h3>
+        <ul>
+            <li>🎓 Academic stress or exam anxiety</li>
+            <li>🤝 Relationship or family issues</li>
+            <li>😔 Feelings of sadness, isolation, or low self-esteem</li>
+            <li>🧭 Decision-making and goal setting</li>
+            <li>😤 Anger or stress management</li>
+            <blockquote>
+    “Sometimes just talking to someone makes all the difference.”
+</blockquote>
+
+        </ul>
+    </section>
+
+    <section class="benefits">
+        <h3>What You Can Expect</h3>
+        <p>Our counseling sessions are:</p>
+        <ul>
+            <li>✅ Private and confidential</li>
+            <li>✅ Judgment-free</li>
+            <li>✅ Conducted by trained LASU professionals</li>
+            <li>✅ Tailored to your unique situation</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h4>Ready to Talk?</h4>
+        <p>Whether you're going through something serious or just need someone to talk to, we're here. You can book an appointment or start an instant live session at any time.</p>
+        <a class="submit-btn" href="{% url 'chat_room' room_name='instant-session' %}">Start Live Chat</a>
+    </section>
+</div>
+
+<style>
+body {
+    background: linear-gradient(to right, #e3f2fd, #fff);
+}
+
+.about-container {
+    max-width: 850px;
+    margin: 50px auto;
+    padding: 40px 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 64, 128, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.about-container h2 {
+    color: #004080;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+.about-container h3 {
+    color: #f4a31a;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.about-container h4 {
+    color: #2e8b57;
+    margin-top: 35px;
+}
+
+.about-container section {
+    margin-bottom: 25px;
+}
+
+.about-container ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-container ul li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.about-container ul li::before {
+    content: "🌟";
+    position: absolute;
+    left: 0;
+    color: #f4a31a;
+}
+
+.about-container p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+blockquote {
+    font-style: italic;
+    background: #f9f9f9;
+    border-left: 4px solid #f4a31a;
+    margin: 20px 0;
+    padding: 10px 20px;
+    color: #444;
+}
+
+.submit-btn {
+    background-color: #f4a31a;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #d89014;
+}
+</style>
+
+{% endblock %}

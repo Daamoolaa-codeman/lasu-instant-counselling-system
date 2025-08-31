@@ -1,0 +1,18 @@
+{% extends 'counseling/page_base.html' %}
+
+{% block content %}
+    <div class="form-container">
+        <h2>Counselor Registration</h2>
+        <form method="POST" action="{% url 'counselor_signup' %}">
+            {% csrf_token %}
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="text" name="pf_number" placeholder="PF Number" required>
+            <input type="text" name="specialization" placeholder="Specialization" required>
+            <input type="text" name="office_location" placeholder="Office Location" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="btn" style="margin: 0 auto;">Register</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LASU Student Counseling Management System</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="{% static 'images/lasu_logo.png' %}" alt="LASU Logo" class="logo">
+                <h2>LASU Counseling</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{% url 'student_dashboard' %}"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="{% url 'book_appointment' %}" class="{% if request.path == '/book-appointment/' %}active{% endif %}"><i class="fa fa-calendar"></i> Book Appointment</a></li>
+                    <li><a href="{% url 'view_appointments' %}" class="{% if request.path == '/view-appointments/' %}active{% endif %}"><i class="fa fa-list"></i> My Appointments</a></li>
+                    <li><a href="{% url 'chat_room' room_name='instant-session' %}"><i class="fas fa-comments"></i> Live Chat</a></li>
+                    <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+         <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <main class="main-content">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    <script>
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('active');
+}
+</script>
+</body>
+</html>

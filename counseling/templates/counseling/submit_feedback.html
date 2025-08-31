@@ -1,0 +1,33 @@
+{% extends 'counseling/base.html' %}
+
+{% block content %}
+<div class="feedback-container">
+    <h2>📝 Submit Feedback</h2>
+    <p class="feedback-instruction">Please rate your session and leave any comments below.</p>
+
+    <form method="POST" class="feedback-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label><strong>Rating:</strong></label>
+            <div class="star-rating">
+                {% for i in "54321" %}
+                    <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}">
+                    <label for="star{{ i }}" title="{{ i }} stars">★</label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="id_comments"><strong>Comments:</strong></label>
+            {{ form.comments }}
+        </div>
+
+        <button type="submit" class="submit-btn">✅ Submit Feedback</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+
+{% endblock %}
