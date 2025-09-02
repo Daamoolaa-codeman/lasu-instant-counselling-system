@@ -1,6 +1,13 @@
+{% load static %}
+<head>
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>
 {% block content %}
 <div class="about-container">
-    <h2>🧠 About Counseling</h2>
+                <img src="{% static 'images/lasu_logo.png' %}" alt="LASU Logo" class="logo" style="width: 90px; display:block; margin: 0 auto;">
+
+    <h2>About Counseling</h2>
 
     <section class="intro">
         <p>Counseling is a confidential and supportive service designed to help students manage academic, personal, emotional, and social challenges.</p>
@@ -10,11 +17,11 @@
     <section class="why-counseling">
         <h3>Why Seek Counseling?</h3>
         <ul>
-            <li>🎓 Academic stress or exam anxiety</li>
-            <li>🤝 Relationship or family issues</li>
-            <li>😔 Feelings of sadness, isolation, or low self-esteem</li>
-            <li>🧭 Decision-making and goal setting</li>
-            <li>😤 Anger or stress management</li>
+            <li>Academic stress or exam anxiety</li>
+            <li>Relationship or family issues</li>
+            <li>Feelings of sadness, isolation, or low self-esteem</li>
+            <li>Decision-making and goal setting</li>
+            <li>Anger or stress management</li>
             <blockquote>
     “Sometimes just talking to someone makes all the difference.”
 </blockquote>
@@ -26,17 +33,17 @@
         <h3>What You Can Expect</h3>
         <p>Our counseling sessions are:</p>
         <ul>
-            <li>✅ Private and confidential</li>
-            <li>✅ Judgment-free</li>
-            <li>✅ Conducted by trained LASU professionals</li>
-            <li>✅ Tailored to your unique situation</li>
+            <li>Private and confidential</li>
+            <li>Judgment-free</li>
+            <li>Conducted by trained LASU professionals</li>
+            <li>Tailored to your unique situation</li>
         </ul>
     </section>
 
     <section class="cta">
         <h4>Ready to Talk?</h4>
         <p>Whether you're going through something serious or just need someone to talk to, we're here. You can book an appointment or start an instant live session at any time.</p>
-        <a class="submit-btn" href="{% url 'chat_room' room_name='instant-session' %}">Start Live Chat</a>
+        <a class="submit-btn" style="width: auto;" href="{% url 'chat_room' room_name='instant-session' %}">Start Live Chat</a>
     </section>
 </div>
 
@@ -46,13 +53,12 @@ body {
 }
 
 .about-container {
-    max-width: 850px;
+    width: 50%;
     margin: 50px auto;
     padding: 40px 30px;
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 64, 128, 0.1);
-    font-family: 'Segoe UI', sans-serif;
     color: #333;
     animation: fadeIn 0.7s ease-in-out;
 }
@@ -96,10 +102,10 @@ body {
 }
 
 .about-container ul li::before {
-    content: "🌟";
+    content: "►";
     position: absolute;
     left: 0;
-    color: #f4a31a;
+    color: #0b0b0b;
 }
 
 .about-container p {
@@ -136,3 +142,4 @@ blockquote {
 </style>
 
 {% endblock %}
+</body>

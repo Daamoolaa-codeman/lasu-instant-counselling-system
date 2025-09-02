@@ -15,24 +15,28 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import Appointment, Feedback
+from .models import Video
+
+def video_list(request):
+    videos = Video.objects.all().order_by('-date_added')
+    return render(request, 'videos/video_list.html', {'videos': videos})
+
 
 
 @login_required 
 def counselor_dashboard(request):
     counselor = request.user.counselor
-    total_appointments = Appointment.objects.filter(counselor=counselor).count()
     completed_sessions = Appointment.objects.filter(counselor=counselor, status='Completed').count()
-    feedback_count = Feedback.objects.filter(appointment__counselor=counselor).count()
 
     context = {
-        'total_appointments': total_appointments,
         'completed_sessions': completed_sessions,
-        'feedback_count': feedback_count,
+        'role': "counselor"
     }
+
     return render(request, 'counseling/counselor_dashboard.html', context)
 
 
-
+@login_required
 def student_dashboard(request):
     student = request.user.student
     total_appointments = Appointment.objects.filter(student=student).count()
@@ -43,6 +47,7 @@ def student_dashboard(request):
         'total_appointments': total_appointments,
         'completed_sessions': completed_sessions,
         'pending_appointments': pending_appointments,
+        'role': "student"
     })
 
 
@@ -64,7 +69,7 @@ def student_login(request):
         user = authenticate(request, username=matric_no, password=password)
         if user is not None and hasattr(user, 'student'):
             login(request, user)
-            return redirect('book_appointment')  # or 'student_dashboard'
+            return redirect('student_dashboard')  # or 'student_dashboard'
         else:
             messages.error(request, 'Invalid credentials or not a student.')
     return render(request, 'counseling/student_login.html')
@@ -73,8 +78,8 @@ def counselor_login(request):
     if request.method == 'POST':
         pf_number = request.POST['pf_number']
         password = request.POST['password']
+        print(pf_number, password)
         user = authenticate(request, username=pf_number, password=password)
-        print(user)
         if user is not None and hasattr(user, 'counselor'):
             login(request, user)
             return redirect('counselor_dashboard')
@@ -181,14 +186,12 @@ def view_appointment(request):
 def appointment_success(request):
     return render(request, 'counseling/appointment_success.html')
 
-@login_required
-def student_dashboard(request):
-    return render(request, 'counseling/student_dashboard.html')
-
-
 
 def students_feedback(request):
     return render(request, 'counseling/students_feedback.html')
 
 def render_homepage(request):
     return render(request, 'counseling/homepage.html')
+
+def render_session_history(request):
+    return render(request, 'counseling/session_history.html')

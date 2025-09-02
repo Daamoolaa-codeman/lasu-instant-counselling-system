@@ -13,14 +13,14 @@
         <aside class="sidebar">
             <div class="sidebar-header">
                 <img src="{% static 'images/lasu_logo.png' %}" alt="LASU Logo" class="logo">
-                <h2>LASU Counseling</h2>
+                <h2>Instant Counseling</h2>
             </div>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="{% url 'student_dashboard' %}"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="{% url 'book_appointment' %}" class="{% if request.path == '/book-appointment/' %}active{% endif %}"><i class="fa fa-calendar"></i> Book Appointment</a></li>
-                    <li><a href="{% url 'view_appointments' %}" class="{% if request.path == '/view-appointments/' %}active{% endif %}"><i class="fa fa-list"></i> My Appointments</a></li>
+                                       {% if role == "student" %} <li><a href="{% url 'video_list' %}"><i class="fas fa-video"></i> Helpful Videos</a></li>  {% endif %}
                     <li><a href="{% url 'chat_room' room_name='instant-session' %}"><i class="fas fa-comments"></i> Live Chat</a></li>
+                                       <li><a href="{% url 'session_history' %}"><i class="fas fa-clock"></i> Session History</a></li>
                     <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>

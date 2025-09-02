@@ -4,53 +4,31 @@
 <div class="student-dashboard">
     <h2 class="dashboard-heading">🎓 Welcome, {{ user.first_name }}!</h2>
 
-    <div class="metrics">
-    <div class="metric-card">
-        <h4>Total Appointments</h4>
-        <p>{{ total_appointments }}</p>
-    </div>
-    <div class="metric-card">
-        <h4>Completed Sessions</h4>
-        <p>{{ completed_sessions }}</p>
-    </div>
-    <div class="metric-card">
-        <h4>Pending Appointments</h4>
-        <p>{{ pending_appointments }}</p>
-    </div>
-</div>
-
     <div class="dashboard-grid">
-        <!-- Book Appointment -->
+        <!-- Helpful Videos -->
         <div class="dashboard-tile tile-1">
-            <div class="icon">📅</div>
-            <h3>Book Appointment</h3>
-            <p>Schedule a counseling session with a counselor.</p>
-            <a href="{% url 'book_appointment' %}" class="tile-btn">Book Now</a>
+            <div class="icon">🎥</div>
+            <h3>Listen To Helpful Videos</h3>
+            <p>Watch Helpful Videos.</p>
+            <a href="{% url 'video_list' %}" class="tile-btn">Watch Now</a>
         </div>
 
-        <!-- View Appointments -->
-        <div class="dashboard-tile tile-2">
-            <div class="icon">📖</div>
-            <h3>View Appointments</h3>
-            <p>Check your upcoming and past appointments.</p>
-            <a href="{% url 'view_appointments' %}" class="tile-btn">View</a>
-        </div>
-
-        <!-- Session History -->
-        <div class="dashboard-tile tile-3">
-            <div class="icon">📜</div>
-            <h3>Session History</h3>
-            <p>Review counseling history and feedback.</p>
-            <a href="{% url 'view_appointments' %}" class="tile-btn">View History</a>
-        </div>
-
-        <!-- Live Chat -->
+             <!-- Live Chat -->
         <div class="dashboard-tile tile-4">
             <div class="icon">💬</div>
             <h3>Instant Chat</h3>
             <p>Start a live counseling session with an available counselor.</p>
             <a href="{% url 'chat_room' room_name='instant-session' %}" class="tile-btn">Start Chat</a>
         </div>
+
+        <!-- Session History -->
+        <div class="dashboard-tile tile-3">
+            <div class="icon">⏰</div>
+            <h3>Session History</h3>
+            <p>Review counseling history and feedback.</p>
+            <a href="{% url 'session_history' %}" class="tile-btn">View History</a>
+        </div>
+
     </div>
 </div>
 
@@ -64,7 +42,7 @@
     text-align: center;
     font-size: 28px;
     margin-bottom: 30px;
-    color: #2e8b57;
+    color: #004080;
 }
 .dashboard-grid {
     display: grid;
@@ -83,7 +61,7 @@
     transform: translateY(-5px);
 }
 .dashboard-tile h3 {
-    color: #2e8b57;
+    color: #004080;
     margin: 15px 0 10px;
 }
 .dashboard-tile p {
@@ -98,7 +76,7 @@
     margin-top: 15px;
     display: inline-block;
     padding: 10px 20px;
-    background-color: #2e8b57;
+    background-color: #004080;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -123,7 +101,7 @@
 
 .metric-card {
     background-color: #f0f9f5;
-    border-left: 5px solid #2e8b57;
+    border-left: 5px solid #004080;
     padding: 20px;
     flex: 1;
     min-width: 220px;
@@ -133,7 +111,7 @@
 }
 
 .metric-card h4 {
-    color: #2e8b57;
+    color: #004080;
     margin-bottom: 10px;
 }
 

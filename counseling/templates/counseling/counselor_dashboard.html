@@ -3,29 +3,9 @@
 <div class="dashboard-container">
     <h2>👩‍🏫 Welcome, {{ user.first_name }}!</h2>
 
-    <!-- 🔹 Summary Metrics -->
-    <div class="summary-cards">
-        <div class="summary-card card-blue">
-            <h4>Total Bookings</h4>
-            <p>{{ total_appointments }}</p>
-        </div>
-        <div class="summary-card card-green">
-            <h4>Completed Sessions</h4>
-            <p>{{ completed_sessions }}</p>
-        </div>
-        <div class="summary-card card-yellow">
-            <h4>Feedback Received</h4>
-            <p>{{ feedback_count }}</p>
-        </div>
-    </div>
-
     <!-- 🔹 Functional Cards -->
     <div class="dashboard-cards">
-        <div class="dashboard-card">
-            <h3>Booked Appointments</h3>
-            <p>Review and manage your upcoming counseling appointments.</p>
-            <a href="{% url 'counselor_appointments' %}" class="submit-btn">View Bookings</a>
-        </div>
+       
 
         <div class="dashboard-card">
             <h3>Session History</h3>
@@ -33,11 +13,7 @@
             <a href="{% url 'session_history' %}" class="submit-btn">View Sessions</a>
         </div>
 
-        <div class="dashboard-card">
-            <h3>Feedback</h3>
-            <p>Read feedback submitted by students regarding past sessions.</p>
-            <a href="{% url 'counselor_feedback' %}" class="submit-btn">View Feedback</a>
-        </div>
+
 
         <div class="dashboard-card">
             <h3>Join Instant Chat</h3>

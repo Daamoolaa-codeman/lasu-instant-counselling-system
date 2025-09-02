@@ -1,0 +1,53 @@
+{% extends 'counseling/base.html' %}
+
+{% block content %}
+<div class="video-page">
+
+    <!-- Page Header -->
+    <h2 class="page-title">Helpful Counseling Videos</h2>
+    <p class="page-subtitle">Grow, heal, and find inspiration through these videos.</p>
+
+    <!-- Inspirational Section -->
+    <div class="inspiration">
+        <blockquote>
+            "Your present circumstances don’t determine where you can go; they merely determine where you start."
+        </blockquote>
+    </div>
+
+    <!-- Videos Grid -->
+    <div class="video-grid">
+        {% for video in videos %}
+        <div class="video-card">
+            <h3>{{ video.title }}</h3>
+            <p>{{ video.description }}</p>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/{{ video.youtube_url|cut:'https://www.youtube.com/watch?v=' }}" 
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<p id="quote" class="inspiration"></p>
+
+<script>
+    const quotes = [
+        "Your mind is your superpower. Nourish it with positivity.",
+        "Every small step is progress, keep moving forward.",
+        "Healing starts when you choose to take care of yourself.",
+        "You are stronger than you think."
+    ];
+    
+    let i = 0;
+    function showQuote() {
+        document.getElementById("quote").innerText = quotes[i];
+        i = (i + 1) % quotes.length;
+    }
+    setInterval(showQuote, 5000); // change every 5 sec
+    showQuote(); // initial call
+</script>
+
+{% endblock %}

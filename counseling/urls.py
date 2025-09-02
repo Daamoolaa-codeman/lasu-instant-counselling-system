@@ -19,6 +19,8 @@ urlpatterns = [
     path('students_feedback/', views.students_feedback, name='students_feedback'),
     path('logout/', views.logout_view, name='logout'),
     path('about_counseling/', views.about_counseling, name='about_counseling'),
+    path('videos/', views.video_list, name='video_list'),
+    path('session-history/', views.render_session_history, name='session_history'),
 ]
 
 

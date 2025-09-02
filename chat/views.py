@@ -5,7 +5,9 @@ from django.contrib.auth.decorators import login_required
 
 def room(request, room_name):
     return render(request, 'chat/room.html', {
-        'room_name': room_name
+        'room_name': room_name,
+        'username': request.user.username,
+        'role': "student" if request.user.student else "counselor"
     })
 
 
@@ -13,5 +15,6 @@ def room(request, room_name):
 def chat_room(request, room_name):
     return render(request, 'chat/room.html', {
         'room_name': room_name,
-        'username': request.user.username
+        'username': request.user.username,
+        'role': "student" if hasattr(request.user, "student") else "counselor"
     })

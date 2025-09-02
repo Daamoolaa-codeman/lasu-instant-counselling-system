@@ -6,9 +6,11 @@
 
     <div id="chat-log" class="chat-log styled-chat-log"></div>
 
-    <input id="chat-message-input" type="text" size="100" placeholder="Type your message here..." autofocus>
-    <button id="chat-message-submit" class="submit-btn">Send</button>
-    <div id="typing-indicator" style="font-style: italic; color: #888; margin-top: 5px;"></div>
+    <textarea rows="5" style="width: 100%; box-sizing: border-box; font-family: inherit; border-radius: 10px; padding: 20px;" id="chat-message-input" type="text" placeholder="Type your message here..." autofocus></textarea>
+    <button id="chat-message-submit" class="submit-btn" style="margin-top: 10px;">Send</button>
+        {% if role == "counselor" %} <button id="get-ai-opinion-button" onclick="alert('Waiting for student\'s message')" class="submit-btn" style="margin-top: 10px; background-color: #f4a31a;">Get AI's Opinion</button> {% endif %}
+
+    <div id="typing-indicator" style="font-style: italic; color: #888;"></div>
     
 </div>
 
@@ -99,7 +101,7 @@
 
 <style>
 .chat-log {
-    height: 300px;
+    height: 200px;
     overflow-y: auto;
     padding: 10px;
     border-radius: 6px;

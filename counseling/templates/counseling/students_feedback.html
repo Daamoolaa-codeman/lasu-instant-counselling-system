@@ -21,7 +21,7 @@
                     <td>{{ fb.appointment.counseling_service.name }}</td>
                     <td>
                         {% for i in "12345" %}
-                            <span style="color: {% if i|add:"0"|int <= fb.rating %}gold{% else %}#ccc{% endif %}; font-size: 18px;">★</span>
+                            <span style="color: {% if i|add:'0'|int <= fb.rating %} gold {% else %} #ccc {% endif %}; font-size: 18px;">★</span>
                         {% endfor %}
                     </td>
                     <td>{{ fb.comments }}</td>
